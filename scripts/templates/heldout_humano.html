@@ -1,0 +1,205 @@
+<title>Perguntas de Lojista</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
+<style>
+/* Layout: uma coluna de bloco de notas (até 40rem), a pergunta em escrita no topo, a lista das já escritas embaixo. */
+:root {
+  --bg: #f3f5f2; --surface: #ffffff; --ink: #1d2a24; --muted: #5d6b64; --line: #d5ddd8;
+  --accent: #0b6b4f; --accent-ink: #ffffff; --soft: #e2efe9; --warn: #9a4b00; --bad: #a3271d;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111916; --surface: #18221e; --ink: #e4ece8; --muted: #9db0a7; --line: #2c3a34;
+    --accent: #3fbf92; --accent-ink: #0b1612; --soft: #1d3029; --warn: #f0a254; --bad: #f08a80; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111916; --surface: #18221e; --ink: #e4ece8; --muted: #9db0a7; --line: #2c3a34;
+  --accent: #3fbf92; --accent-ink: #0b1612; --soft: #1d3029; --warn: #f0a254; --bad: #f08a80; color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font: 1.02rem/1.55 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 40rem; margin: 0 auto; padding-block: 1.25rem 3rem; display: grid; gap: 1.25rem; }
+h1 { font: 800 clamp(1.6rem, 5vw, 2.2rem)/1.1 var(--display); margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+h2 { font: 600 1.15rem/1.2 var(--display); margin: 0; }
+p { margin: 0; }
+.lede { color: var(--muted); max-width: 62ch; }
+.box { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 1rem; display: grid; gap: .85rem; }
+.picker, .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+.btn, .chip { font: 700 .95rem var(--body); border: 1.5px solid var(--line); background: var(--surface); color: var(--ink);
+  border-radius: 999px; padding: .55rem 1rem; cursor: pointer; min-height: 44px; }
+.chip { font-weight: 400; text-align: left; }
+.btn[aria-pressed="true"], .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn:focus-visible, .chip:focus-visible, textarea:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+label.q { font-weight: 700; }
+textarea { width: 100%; box-sizing: border-box; min-height: 5.5rem; font: 1.05rem/1.45 var(--body); color: var(--ink);
+  background: var(--bg); border: 1.5px solid var(--line); border-radius: 10px; padding: .7rem; resize: vertical; }
+.hint { color: var(--muted); font-size: .9rem; }
+.count { font: 600 .9rem var(--display); color: var(--accent); letter-spacing: .04em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.bar { height: 6px; background: var(--soft); border-radius: 99px; overflow: hidden; }
+.bar span { display: block; height: 100%; background: var(--accent); width: 0; transition: width .3s; }
+@media (prefers-reduced-motion: reduce) { .bar span { transition: none; } }
+ol.list { margin: 0; padding-left: 1.4rem; display: grid; gap: .6rem; }
+ol.list li { padding-left: .2rem; }
+.meta { color: var(--muted); font-size: .85rem; display: flex; flex-wrap: wrap; gap: .4rem .8rem; align-items: center; }
+.linkbtn { background: none; border: 0; color: var(--accent); font: 700 .85rem var(--body); cursor: pointer; padding: .2rem 0; text-decoration: underline; }
+.notice { border-left: 4px solid var(--warn); padding: .55rem .8rem; background: var(--soft); border-radius: 6px; font-size: .92rem; }
+.status { font-size: .85rem; color: var(--muted); }
+.status.err { color: var(--bad); }
+.tips { margin: 0; padding-left: 1.2rem; display: grid; gap: .3rem; color: var(--muted); font-size: .92rem; }
+</style>
+
+<main class="wrap">
+  <header style="display:grid;gap:.6rem">
+    <p class="count">Teste cego do assistente Getnet</p>
+    <h1>Escreva perguntas como um lojista escreveria</h1>
+    <p class="lede">Imagine que você tem uma loja e usa a maquininha da Getnet. Escreva o que você mandaria para o
+      atendimento, do seu jeito. Não precisa ser bonito nem completo. Ninguém vai ver o sistema antes: estas perguntas
+      servem para testar o assistente com algo que ele nunca viu.</p>
+  </header>
+
+  <section class="box" aria-labelledby="who-t">
+    <h2 id="who-t">Quem está escrevendo?</h2>
+    <div class="picker" id="picker"></div>
+    <p class="status" id="save" aria-live="polite"></p>
+    <div class="notice" id="notice" hidden></div>
+  </section>
+
+  <section class="box" id="writer" aria-labelledby="w-t" hidden>
+    <div style="display:grid;gap:.45rem">
+      <p class="count" id="count">0 de 15</p>
+      <div class="bar" aria-hidden="true"><span id="bar"></span></div>
+    </div>
+    <h2 id="w-t">Nova pergunta</h2>
+    <label class="q" for="msg">O que você escreveria?</label>
+    <textarea id="msg" maxlength="400" placeholder="Escreva como você perguntaria, com as suas palavras"></textarea>
+    <p class="q" id="tipo-t">Do que ela trata?</p>
+    <div class="chips" id="tipo" role="group" aria-labelledby="tipo-t"></div>
+    <p class="q" id="hum-t">Você esperaria ser passado para um atendente humano?</p>
+    <div class="chips" id="hum" role="group" aria-labelledby="hum-t"></div>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+      <button type="button" class="btn primary" id="add" disabled>Guardar pergunta</button>
+      <button type="button" class="btn" id="cancel" hidden>Cancelar edição</button>
+    </div>
+    <ul class="tips">
+      <li>Varie: dúvida de produto, sua venda de ontem, problema na maquininha, pedido para falar com alguém, algo fora do assunto, uma pergunta em inglês.</li>
+      <li>Pode juntar duas coisas numa mensagem, errar acento, abreviar. Lojista de verdade escreve assim.</li>
+      <li>Não olhe exemplos nem respostas do sistema: escreva da sua cabeça.</li>
+    </ul>
+  </section>
+
+  <section class="box" id="mine" aria-labelledby="m-t" hidden>
+    <h2 id="m-t">Suas perguntas</h2>
+    <p class="hint" id="empty">Nenhuma ainda. A primeira aparece aqui assim que você guardar.</p>
+    <ol class="list" id="list"></ol>
+  </section>
+</main>
+
+<script>
+(() => {
+  const RATERS = ["Matheus", "Bianca"];
+  const GOAL = 15;
+  const TIPOS = [
+    ["knowledge", "Dúvida sobre produto ou serviço da Getnet"],
+    ["support", "Algo da minha loja: vendas, recebimentos, minhas maquininhas"],
+    ["troubleshoot", "Maquininha com problema ou erro"],
+    ["human_request", "Quero falar com uma pessoa"],
+    ["general", "Fora da Getnet: clima, câmbio, outro assunto"],
+    ["multi", "Duas coisas na mesma mensagem"],
+    ["blocked", "Tentativa de enganar o assistente"],
+  ];
+  const HUM = [["sim", "Sim"], ["nao", "Não"]];
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const state = { author: "", items: [], draft: { q: "", tipo: "", hum: "" }, editing: -1 };
+  let ref = null, timer = null;
+
+  function chipRow(el, opts, key) {
+    el.innerHTML = opts.map(([v, label]) =>
+      `<button type="button" class="chip" id="${key}-${v}" data-k="${key}" data-v="${v}" aria-pressed="${state.draft[key] === v}">${esc(label)}</button>`).join("");
+  }
+  function ready() { return state.draft.q.trim().length >= 5 && state.draft.tipo && state.draft.hum; }
+  function render() {
+    $("picker").innerHTML = RATERS.map((r, k) =>
+      `<button type="button" class="btn" id="who-${k}" data-who="${esc(r)}" aria-pressed="${state.author === r}">${esc(r)}</button>`).join("");
+    $("writer").hidden = $("mine").hidden = !state.author;
+    chipRow($("tipo"), TIPOS, "tipo"); chipRow($("hum"), HUM, "hum");
+    if ($("msg").value !== state.draft.q) $("msg").value = state.draft.q;
+    $("add").disabled = !ready();
+    $("add").textContent = state.editing >= 0 ? "Salvar alteração" : "Guardar pergunta";
+    $("cancel").hidden = state.editing < 0;
+    const n = state.items.length;
+    $("count").textContent = `${n} de ${GOAL}` + (n >= GOAL ? " · pronto, pode parar ou seguir" : "");
+    $("bar").style.width = `${Math.min(100, (100 * n) / GOAL)}%`;
+    $("empty").hidden = n > 0;
+    const label = Object.fromEntries(TIPOS);
+    $("list").innerHTML = state.items.map((it, i) => `<li><p>${esc(it.q)}</p>
+      <p class="meta"><span>${esc(label[it.tipo] || it.tipo)}</span><span>Atendente: ${it.hum === "sim" ? "sim" : "não"}</span>
+      <button type="button" class="linkbtn" data-edit="${i}">Editar</button>
+      <button type="button" class="linkbtn" data-del="${i}">Apagar</button></p></li>`).join("");
+  }
+  function status(text, err) { $("save").textContent = text; $("save").classList.toggle("err", !!err); }
+  function keepLocal() { try { localStorage.setItem("held-" + state.author, JSON.stringify(state.items)); } catch (e) {} }
+  function save() {
+    keepLocal();
+    if (!ref) { status("Salvo só neste aparelho (entre com sua conta do claude.ai para enviar).", true); return; }
+    clearTimeout(timer);
+    status("salvando…");
+    timer = setTimeout(async () => {
+      try {
+        await ref.set({ author: state.author, items: state.items, updated_at: new Date().toISOString() });
+        status(`Salvo: ${state.items.length} pergunta(s) enviadas.`);
+      } catch (e) { status("Não consegui salvar (" + (e?.code || "erro") + "). Tente de novo em instantes.", true); }
+    }, 300);
+  }
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b || b.disabled) return;
+    if (b.dataset.who) { state.author = b.dataset.who; load(); return; }
+    if (b.dataset.k) { state.draft[b.dataset.k] = b.dataset.v; render(); return; }
+    if (b.dataset.edit !== undefined) { const i = +b.dataset.edit; state.editing = i; state.draft = { ...state.items[i] }; render(); $("msg").focus(); return; }
+    if (b.dataset.del !== undefined) { state.items.splice(+b.dataset.del, 1); state.editing = -1; render(); save(); return; }
+    if (b.id === "cancel") { state.editing = -1; state.draft = { q: "", tipo: "", hum: "" }; render(); return; }
+    if (b.id === "add" && ready()) {
+      const item = { q: state.draft.q.trim(), tipo: state.draft.tipo, hum: state.draft.hum, at: new Date().toISOString() };
+      if (state.editing >= 0) state.items[state.editing] = item; else state.items.push(item);
+      state.editing = -1; state.draft = { q: "", tipo: "", hum: "" }; render(); save(); $("msg").focus();
+    }
+  });
+  $("msg").addEventListener("input", (e) => { state.draft.q = e.target.value; $("add").disabled = !ready(); });
+
+  let db = null, uid = "";
+  async function load() {
+    try { state.items = JSON.parse(localStorage.getItem("held-" + state.author) || "[]"); } catch (e) { state.items = []; }
+    if (db && uid) {
+      ref = db.doc("heldout/" + uid);
+      try {
+        const snap = await ref.get();
+        if (snap.exists) { const d = snap.data() || {}; if (d.author === state.author) state.items = JSON.parse(JSON.stringify(d.items || [])); }
+        status(state.items.length ? `Salvo: ${state.items.length} pergunta(s) enviadas.` : "");
+      } catch (e) { status("Não consegui ler o que já foi salvo (" + (e?.code || "erro") + ").", true); }
+    } else {
+      status("Salvo só neste aparelho (entre com sua conta do claude.ai para enviar).", true);
+    }
+    render();
+  }
+  async function connect() {
+    const t = setTimeout(() => { $("notice").textContent = "Ainda conectando. Se demorar, confira se você entrou com sua conta do claude.ai."; $("notice").hidden = false; }, 10000);
+    try {
+      if (!window.claude?.use) { clearTimeout(t); return; }
+      const [d, u] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+      clearTimeout(t);
+      if (d && u) { db = d; uid = (await u.id()) || ""; }
+      $("notice").hidden = true;
+      if (state.author) load();
+    } catch (e) { clearTimeout(t); }
+  }
+  render();
+  connect();
+})();
+</script>
