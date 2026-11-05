@@ -95,19 +95,19 @@ Retrieval ativo (dense+windows+cross:base, caminho de busca do agente, `evals/re
 
 | Split | Principal | Todas as checagens | Casos com falha | p50 · p95 | US$ |
 |---|---|---:|---|---:|---:|
-| `official` | resolvidas pela regra **90%** [74.4–96.5] (n=30) | 26/30 | `official-01`, `official-04` ×3 | 10.9 s · 26.1 s | 0.62 |
-| `official-var` | resolvidas pela regra **100%** [83.9–100] (n=20) | 20/20 | nenhum | 14.1 s · 30.3 s | 0.51 |
+| `official` | resolvidas com parciais **90%** [74.4–96.5] (n=30) | 26/30 | `official-01`, `official-04` ×3 | 10.9 s · 26.1 s | 0.62 |
+| `official-var` | resolvidas com parciais **100%** [83.9–100] (n=20) | 20/20 | nenhum | 14.1 s · 30.3 s | 0.51 |
 | `approval` | ação pendente **100%** [56.6–100] (n=5) | 5/5 | nenhum | 9.3 s · 31.6 s | 0.13 |
-| `dependent` | resolvidas pela regra **100%** [72.2–100] (n=10) | 10/10 | nenhum | 27.5 s · 36.7 s | 0.40 |
+| `dependent` | resolvidas com parciais **100%** [72.2–100] (n=10) | 10/10 | nenhum | 27.5 s · 36.7 s | 0.40 |
 | `guardrail` | bloqueio certo **100%** [89.3–100] (n=32) | 32/32 | nenhum | 1.7 s · 11.5 s | 0.09 |
 | `hard` | intenção **100%** [34.2–100] (n=2) | 8/8 | nenhum | 20.6 s · 30.4 s | 0.27 |
 | `heldout` | bloqueio certo **0%** [0–79.3] (n=1) | 97/111 | `heldout-H1-21`, `heldout-H2-04`, `heldout-H2-07`, `heldout-H2-26`, `heldout-H3-03` +9 | 12.2 s · 26.5 s | 2.58 |
 | `hitl` | humano no turno certo **100%** [51–100] (n=4) | 6/6 | nenhum | 9.4 s · 16.3 s | 0.08 |
 | `memory` | fato da conversa **97.9%** [89.1–99.6] (n=48) | 47/48 | `memory-16` | 26.1 s · 65.3 s | 2.58 |
-| `parallel` | resolvidas pela regra **80%** [37.6–96.4] (n=5) | 4/5 | `parallel-04` | 15.4 s · 22.4 s | 0.20 |
+| `parallel` | resolvidas com parciais **80%** [37.6–96.4] (n=5) | 4/5 | `parallel-04` | 15.4 s · 22.4 s | 0.20 |
 | `partial` | intenção **100%** [56.6–100] (n=5) | 5/5 | nenhum | 20.9 s · 23.8 s | 0.20 |
 | `real` | números com base **100%** [84.5–100] (n=21) | 21/21 | nenhum | 19.6 s · 25.3 s | 0.86 |
-| `replan` | resolvidas pela regra **100%** [72.2–100] (n=10) | 14/20 | `replan-07`, `replan-08`, `replan-12`, `replan-13`, `replan-18` +1 | 14.4 s · 28.9 s | 0.58 |
+| `replan` | resolvidas com parciais **100%** [72.2–100] (n=10) | 14/20 | `replan-07`, `replan-08`, `replan-12`, `replan-13`, `replan-18` +1 | 14.4 s · 28.9 s | 0.58 |
 <!-- eval-live:end -->
 
 ## Onde vai o tempo e quem decide (ao vivo: SLO por split, fatia por agente, supervisor LLM × plano do router × código)
@@ -240,7 +240,7 @@ Provedor `anthropic` · status `complete` · gasto US$ 0.621801 (teto 1.702796)
 
 **Regex de fato × juiz** (linhas em que discordam): official: 4 de 30 linhas julgadas; a regex achou todo fato e o juiz não fundamentou (contam como não resolvidas): `official-01`; faltou fato e o juiz aprovou (regex estrita? não muda a conta): `official-04` ×3.
 
-resolvidas pela regra **90%** [74.4–96.5] (n=30) · intenção **100%** [88.6–100] (n=30) · humano certo **100%** [88.6–100] (n=30) · números com base **100%** [88.6–100] (n=30) · idioma **100%** [88.6–100] (n=30)
+resolvidas com parciais **90%** [74.4–96.5] (n=30) · intenção **100%** [88.6–100] (n=30) · humano certo **100%** [88.6–100] (n=30) · números com base **100%** [88.6–100] (n=30) · idioma **100%** [88.6–100] (n=30)
 
 Latência e custo: p50 10.9 s · p95 26.1 s · US$ 0.621801 no split.
 
@@ -254,7 +254,7 @@ Provedor `anthropic` · status `complete` · gasto US$ 0.509171 (teto 1.000526)
 
 **Resolvidas pela regra** (só lexical, sem juiz: sem humano, todo fato de referência na resposta (regex), fonte citada e nenhum passo parcial): official-var **90.0%** [IC95 69.9–97.2; n=20]; parciais 10.0% (2 de 20: q-offvar-01-pt, q-offvar-04-pt), com elas 100.0%.
 
-resolvidas pela regra **100%** [83.9–100] (n=20) · intenção **100%** [83.9–100] (n=20) · humano certo **100%** [83.9–100] (n=20) · números com base **100%** [83.9–100] (n=20) · idioma **100%** [83.9–100] (n=20)
+resolvidas com parciais **100%** [83.9–100] (n=20) · intenção **100%** [83.9–100] (n=20) · humano certo **100%** [83.9–100] (n=20) · números com base **100%** [83.9–100] (n=20) · idioma **100%** [83.9–100] (n=20)
 
 Latência e custo: p50 14.1 s · p95 30.3 s · US$ 0.509171 no split.
 
@@ -276,7 +276,7 @@ Provedor `anthropic` · status `complete` · gasto US$ 0.396074 (teto 0.500263)
 
 **Resolvidas pela regra** (só lexical, sem juiz: sem humano, todo fato de referência na resposta (regex), fonte citada e nenhum passo parcial): dependent **50.0%** [IC95 23.7–76.3; n=10]; parciais 50.0% (5 de 10: dependent-01, dependent-02, dependent-03, dependent-05, dependent-09), com elas 100.0%.
 
-resolvidas pela regra **100%** [72.2–100] (n=10) · intenção **100%** [72.2–100] (n=10) · humano certo **100%** [72.2–100] (n=10) · números com base **100%** [72.2–100] (n=10) · idioma **100%** [72.2–100] (n=10)
+resolvidas com parciais **100%** [72.2–100] (n=10) · intenção **100%** [72.2–100] (n=10) · humano certo **100%** [72.2–100] (n=10) · números com base **100%** [72.2–100] (n=10) · idioma **100%** [72.2–100] (n=10)
 
 Latência e custo: p50 27.5 s · p95 36.7 s · US$ 0.396074 no split.
 
@@ -340,7 +340,7 @@ Provedor `anthropic` · status `complete` · gasto US$ 0.197097 (teto 0.250132)
 
 **Resolvidas pela regra** (só lexical, sem juiz: sem humano, todo fato de referência na resposta (regex), fonte citada e nenhum passo parcial): parallel **80.0%** [IC95 37.6–96.4; n=5] (não resolvidos: parallel-04).
 
-resolvidas pela regra **80%** [37.6–96.4] (n=5) · intenção **100%** [56.6–100] (n=5) · humano certo **100%** [56.6–100] (n=5) · números com base **100%** [56.6–100] (n=5) · idioma **100%** [56.6–100] (n=5)
+resolvidas com parciais **80%** [37.6–96.4] (n=5) · intenção **100%** [56.6–100] (n=5) · humano certo **100%** [56.6–100] (n=5) · números com base **100%** [56.6–100] (n=5) · idioma **100%** [56.6–100] (n=5)
 
 Latência e custo: p50 15.4 s · p95 22.4 s · US$ 0.197097 no split.
 
@@ -372,7 +372,7 @@ Provedor `anthropic` · status `complete` · gasto US$ 0.578078 (teto 1.000526)
 
 **Resolvidas pela regra** (só lexical, sem juiz: sem humano, todo fato de referência na resposta (regex), fonte citada e nenhum passo parcial): replan **60.0%** [IC95 31.3–83.2; n=10]; parciais 40.0% (4 de 10: replan-12, replan-13, replan-14, replan-20), com elas 100.0%.
 
-resolvidas pela regra **100%** [72.2–100] (n=10) · intenção **95%** [76.4–99.1] (n=20) · humano certo **90%** [69.9–97.2] (n=20) · replanejou **70%** [48.1–85.5] (n=20) · números com base **100%** [83.2–100] (n=19) · idioma **100%** [83.2–100] (n=19)
+resolvidas com parciais **100%** [72.2–100] (n=10) · intenção **95%** [76.4–99.1] (n=20) · humano certo **90%** [69.9–97.2] (n=20) · replanejou **70%** [48.1–85.5] (n=20) · números com base **100%** [83.2–100] (n=19) · idioma **100%** [83.2–100] (n=19)
 
 Latência e custo: p50 14.4 s · p95 28.9 s · US$ 0.578078 no split.
 

@@ -28,7 +28,7 @@ def test_live_block_is_one_table_with_the_defining_check_and_the_failures_counte
     table = block[block.index("| Split |"):].strip().splitlines()
     assert len(table) == 2 + 3  # cabeçalho, separador e uma linha por split
     assert table[2].startswith("| `official` |")  # os cenários do enunciado abrem a tabela
-    assert "resolvidas pela regra **33.3%** [6.1–79.2] (n=3)" in table[2] and "| 1/3 |" in table[2]
+    assert "resolvidas com parciais **33.3%** [6.1–79.2] (n=3)" in table[2] and "| 1/3 |" in table[2]
     assert "`official-01` ×2" in table[2] and "9.8 s · 23.5 s" in table[2] and table[2].endswith("| 0.12 |")
     assert "| `hitl` (aborted) | humano no turno certo **100%** (n=1) | 1/1 | nenhum |" in block
     assert "| `real` | números com base **100%** (n=1) |" in block  # sem intenção nem humano: a 1ª que vale

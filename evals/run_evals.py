@@ -2177,7 +2177,7 @@ def _lang_cell(lang: str, v: dict) -> str:
             f"recusa {pct(v['neg_refused'])} (n={v['negatives']})")
 
 
-SUMMARY_KEYS = (("resolved_acc", "resolvidas pela regra"), ("intent_acc", "intenção"),
+SUMMARY_KEYS = (("resolved_acc", "resolvidas com parciais"), ("intent_acc", "intenção"),
                 ("handoff_acc", "humano certo"), ("human_in_turn_acc", "humano no turno certo"),
                 ("human_once_acc", "resposta do humano uma vez só"),
                 ("after_human_acc", "plano seguiu depois do humano"), ("replanned_acc", "replanejou"),

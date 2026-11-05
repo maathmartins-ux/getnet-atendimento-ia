@@ -356,7 +356,7 @@ sem-prova:end -->
 - **Perguntas reais:** 21 de 40. O site de reclamações bloqueou a leitura das páginas, então as perguntas foram reescritas a partir dos títulos, cada uma com o link.
 - **Validação do juiz por pessoas:** 1 rotulador, 22 itens; a pessoa não reprovou nenhuma das 10 respostas adulteradas, então a rotulagem desta entrega não valida o juiz.
 - **Vídeo:** não gravado nesta entrega.
-- **Furo conhecido em `docs/RESULTS.md`:** a tabela por split usa o rótulo "resolvidas pela regra" para uma medida diferente da linha de cada split (em `dependent`, `replan` e `official-var` a tabela mostra 100% e a linha mostra 50%, 60% e 90%). Os números que valem são os da linha do split, que tiram as respostas parciais. A conferência de docs (`scripts/check.py --docs`) reprova essa divergência, e não houve tempo de corrigir o gerador.
+- **Duas medidas de resolução em `docs/RESULTS.md`:** a tabela por split mostra "resolvidas com parciais" (resposta parcial conta como resolvida) e a linha de cada split mostra "resolvidas pela regra", que tira as parciais (em `dependent`, `replan` e `official-var`: 100% com parciais; 50%, 60% e 90% sem elas). Os números de resolução que valem são os sem parciais.
 
 ## 8. Procedência e linha do tempo
 
