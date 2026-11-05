@@ -57,7 +57,7 @@ jobs:
           python-version: "3.12"
       # restore + save separados (save com if: always()): o actions/cache só grava no fim de job VERDE, e com a CI
       # vermelha cada execução recomeçaria a frio (medido: eval gate de 870 s no CI sem cache)
-      - uses: actions/cache/restore@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+      - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: /home/runner/.cache/fastembed
           key: fastembed-${{ hashFiles('data/retriever.json', 'requirements-hybrid.lock') }}
@@ -66,7 +66,7 @@ jobs:
       # corpus de novo no eval e no build da imagem (2–4 min de CPU cada). Restaura o MAIS NOVO (a chave exata nunca
       # existe: leva o id da execução) e só o `core` grava, porque só ele vetoriza tudo. Medido (04/11): com a mesma
       # chave nas 6 partes, o pedaço do replay que acaba em 1 min gravava 2 MB e a chave, imutável, ficava com eles; o core restaurava 2 MB, vetorizava a frio (eval gate 731 s) e não conseguia gravar.
-      - uses: actions/cache/restore@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+      - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: |
             var/embeddings
@@ -168,7 +168,7 @@ jobs:
           key: fastembed-${{ hashFiles('data/retriever.json', 'requirements-hybrid.lock') }}
       # só restaura os vetores que o `core` gravou (medido 04/11: a quente, sem eles, este job era o mais lento da CI,
       # 4 a 9,4 min); não grava, para o cache continuar sendo só o cheio do `core`
-      - uses: actions/cache/restore@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+      - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: |
             var/embeddings
