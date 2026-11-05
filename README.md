@@ -354,7 +354,7 @@ As perguntas que uma entrevista técnica faria, respondidas com o número medido
 - **Vídeo:** não gravado nesta entrega.
 
 <!-- sem-prova:begin (prova inexistente nesta entrega; a linha volta quando existir)
-| Quais respostas oficiais o juiz reprova, e por quê, se intenção e ferramentas acertam? | o juiz lê o texto das fontes e marca cada execução (fundamentada, útil, tipo de falha); as reprovações, caso a caso, estão em `docs/FAILURE_MODES.md`; o antes × depois da correção, no mesmo código final, em `docs/JUDGE_DIFF.md` | `docs/JUDGE_DIFF.md` |
+| Quais respostas oficiais o juiz reprova, e por quê, se intenção e ferramentas acertam? | o juiz lê o texto das fontes e marca cada execução (fundamentada, útil, tipo de falha); as reprovações, caso a caso, estão em `docs/FAILURE_MODES.md`; o antes × depois da correção não rodou nesta entrega (rodada 2 cortada, ver os cortes declarados acima) | `docs/FAILURE_MODES.md` |
 sem-prova:end -->
 
 ## 8. Procedência e linha do tempo
