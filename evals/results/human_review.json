@@ -56,7 +56,198 @@
  },
  "heldout": null,
  "entre_humanos": null,
- "juiz_x_humano": null,
+ "juiz_x_humano": {
+  "casos": 22,
+  "concordancia": 0.5,
+  "tpr": 0.55,
+  "tnr": 0.0,
+  "positives": 20,
+  "negatives": 2,
+  "juiz_reprova": 9,
+  "negativos_reais": 2,
+  "negativos_plantados": 0,
+  "tnr_nos_reais": 0.0,
+  "validacao": {
+   "validated": false,
+   "planted_only": false,
+   "missing": [
+    ">= 10 positivos e negativos humanos (tem 20 e 2)",
+    "TPR e TNR >= 0.8 (tem 0.55 e 0.0)",
+    ">= 3 negativos de respostas reais (tem 2)",
+    "TNR >= 0.8 nos negativos de respostas reais (tem 0.0)"
+   ],
+   "real_negatives": 2,
+   "real_tnr": 0.0,
+   "rule": ">= 10 por classe e TPR, TNR >= 0.8",
+   "planted_rule": "com respostas de defeito plantado no bloco, também >= 3 negativos de respostas reais e TNR >= 0.8 neles",
+   "selection_rule": "só conta resposta real que entrou na amostra sem depender do juiz (sorteio ou checagem automática que falhou); a escolhida porque o juiz a reprovou e a sem o motivo da escolha gravado (seleção desconhecida) ficam fora da validação, inclusive do mínimo de negativos reais, e saem à parte como diagnóstico",
+   "left_out": {}
+  },
+  "veredito_do_juiz": "fundamentada, útil, no idioma da pergunta e sem vazamento — as 3 perguntas da página",
+  "selecao": {
+   "aleatoria": 11,
+   "checagem": 1,
+   "plantada": 10
+  },
+  "leituras_reais": {
+   "em_vigor": "depois",
+   "por_que": "a pessoa reprova se qualquer das 3 perguntas da página sai ruim, e a 1ª é se a resposta atende ao pedido: sem o `helpful`, a resposta fundamentada que não atende contaria como erro do juiz, quando é só critério diferente",
+   "antes": {
+    "regra": "não fundamentada, idioma errado ou vazamento (evals.judge.verdict_fails)",
+    "casos": 12,
+    "concordancia": 0.75,
+    "tpr": 0.9,
+    "tnr": 0.0,
+    "positives": 10,
+    "negatives": 2,
+    "juiz_reprova": 1,
+    "validacao": {
+     "validated": false,
+     "missing": [
+      ">= 10 positivos e negativos humanos (tem 10 e 2)",
+      "TPR e TNR >= 0.8 (tem 0.9 e 0.0)"
+     ],
+     "rule": ">= 10 por classe e TPR, TNR >= 0.8",
+     "selection_rule": "só conta resposta real que entrou na amostra sem depender do juiz (sorteio ou checagem automática que falhou); a escolhida porque o juiz a reprovou e a sem o motivo da escolha gravado (seleção desconhecida) ficam fora da validação, inclusive do mínimo de negativos reais, e saem à parte como diagnóstico",
+     "left_out": {}
+    }
+   },
+   "depois": {
+    "regra": "não fundamentada, idioma errado, vazamento ou não atende ao pedido (+ helpful=False: as 3 perguntas da página)",
+    "casos": 12,
+    "concordancia": 0.75,
+    "tpr": 0.9,
+    "tnr": 0.0,
+    "positives": 10,
+    "negatives": 2,
+    "juiz_reprova": 1,
+    "validacao": {
+     "validated": false,
+     "missing": [
+      ">= 10 positivos e negativos humanos (tem 10 e 2)",
+      "TPR e TNR >= 0.8 (tem 0.9 e 0.0)"
+     ],
+     "rule": ">= 10 por classe e TPR, TNR >= 0.8",
+     "selection_rule": "só conta resposta real que entrou na amostra sem depender do juiz (sorteio ou checagem automática que falhou); a escolhida porque o juiz a reprovou e a sem o motivo da escolha gravado (seleção desconhecida) ficam fora da validação, inclusive do mínimo de negativos reais, e saem à parte como diagnóstico",
+     "left_out": {}
+    }
+   }
+  },
+  "reais": {
+   "casos": 12,
+   "concordancia": 0.75,
+   "tpr": 0.9,
+   "tnr": 0.0,
+   "positives": 10,
+   "negatives": 2,
+   "juiz_reprova": 1,
+   "validacao": {
+    "validated": false,
+    "missing": [
+     ">= 10 positivos e negativos humanos (tem 10 e 2)",
+     "TPR e TNR >= 0.8 (tem 0.9 e 0.0)"
+    ],
+    "rule": ">= 10 por classe e TPR, TNR >= 0.8",
+    "selection_rule": "só conta resposta real que entrou na amostra sem depender do juiz (sorteio ou checagem automática que falhou); a escolhida porque o juiz a reprovou e a sem o motivo da escolha gravado (seleção desconhecida) ficam fora da validação, inclusive do mínimo de negativos reais, e saem à parte como diagnóstico",
+    "left_out": {}
+   }
+  },
+  "adulteradas": {
+   "casos": 10,
+   "concordancia": 0.2,
+   "tpr": 0.2,
+   "tnr": null,
+   "positives": 10,
+   "negatives": 0,
+   "juiz_reprova": 8,
+   "negativos_reais": 0,
+   "negativos_plantados": 0,
+   "tnr_nos_reais": null,
+   "validacao": {
+    "validated": false,
+    "planted_only": false,
+    "missing": [
+     ">= 10 positivos e negativos humanos (tem 10 e 0)",
+     "TPR e TNR >= 0.8 (tem 0.2 e None)",
+     ">= 3 negativos de respostas reais (tem 0)"
+    ],
+    "real_negatives": 0,
+    "real_tnr": null,
+    "rule": ">= 10 por classe e TPR, TNR >= 0.8",
+    "planted_rule": "com respostas de defeito plantado no bloco, também >= 3 negativos de respostas reais e TNR >= 0.8 neles"
+   },
+   "por_tipo": {
+    "fato_removido": {
+     "casos": 3,
+     "humano_reprova": 0,
+     "juiz_reprova": 1,
+     "juiz_reprova_antes": 0
+    },
+    "numero_trocado": {
+     "casos": 7,
+     "humano_reprova": 0,
+     "juiz_reprova": 7,
+     "juiz_reprova_antes": 7
+    }
+   }
+  },
+  "leituras_plantadas": {
+   "em_vigor": "depois",
+   "por_que": "a pessoa reprova se qualquer das 3 perguntas da página sai ruim, e a 1ª é se a resposta atende ao pedido: sem o `helpful`, a resposta fundamentada que não atende contaria como erro do juiz, quando é só critério diferente",
+   "antes": {
+    "regra": "não fundamentada, idioma errado ou vazamento (evals.judge.verdict_fails)",
+    "casos": 10,
+    "concordancia": 0.3,
+    "tpr": 0.3,
+    "tnr": null,
+    "positives": 10,
+    "negatives": 0,
+    "juiz_reprova": 7,
+    "negativos_reais": 0,
+    "negativos_plantados": 0,
+    "tnr_nos_reais": null,
+    "validacao": {
+     "validated": false,
+     "planted_only": false,
+     "missing": [
+      ">= 10 positivos e negativos humanos (tem 10 e 0)",
+      "TPR e TNR >= 0.8 (tem 0.3 e None)",
+      ">= 3 negativos de respostas reais (tem 0)"
+     ],
+     "real_negatives": 0,
+     "real_tnr": null,
+     "rule": ">= 10 por classe e TPR, TNR >= 0.8",
+     "planted_rule": "com respostas de defeito plantado no bloco, também >= 3 negativos de respostas reais e TNR >= 0.8 neles"
+    }
+   },
+   "depois": {
+    "regra": "não fundamentada, idioma errado, vazamento ou não atende ao pedido (+ helpful=False: as 3 perguntas da página)",
+    "casos": 10,
+    "concordancia": 0.2,
+    "tpr": 0.2,
+    "tnr": null,
+    "positives": 10,
+    "negatives": 0,
+    "juiz_reprova": 8,
+    "negativos_reais": 0,
+    "negativos_plantados": 0,
+    "tnr_nos_reais": null,
+    "validacao": {
+     "validated": false,
+     "planted_only": false,
+     "missing": [
+      ">= 10 positivos e negativos humanos (tem 10 e 0)",
+      "TPR e TNR >= 0.8 (tem 0.2 e None)",
+      ">= 3 negativos de respostas reais (tem 0)"
+     ],
+     "real_negatives": 0,
+     "real_tnr": null,
+     "rule": ">= 10 por classe e TPR, TNR >= 0.8",
+     "planted_rule": "com respostas de defeito plantado no bloco, também >= 3 negativos de respostas reais e TNR >= 0.8 neles"
+    }
+   }
+  }
+ },
  "adulteradas": {
   "arquivo": "perturbed.json",
   "geradas": 19,

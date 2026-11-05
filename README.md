@@ -24,17 +24,17 @@ tabelas completas, em [docs/RESULTS.md](docs/RESULTS.md); o que veio do kit, em 
 <!-- scorecard:begin -->
 | medida | valor | como se mede |
 |---|---:|---|
-| Oficiais resolvidas por completo (sem humano + todo fato + fonte; parcial fora; só lexical, sem juiz) | 0.90 | só lexical (sem juiz): resposta sem humano, com todo fato de referência do cenário (regex), com fonte e sem passo parcial (os 10 do enunciado) |
-| Oficiais resolvidas por completo: pass^k (todas as rodadas; só lexical, sem juiz) | 0.90 | o mesmo, em todas as rodadas de cada cenário |
+| Oficiais resolvidas por completo (sem humano + todo fato + fonte + juiz: fundamentada; parcial fora) | 0.87 | resposta sem humano, com todo fato de referência do cenário, com fonte, que o juiz diz fundamentada e sem passo parcial (os 10 do enunciado; a regex sozinha não basta) |
+| Oficiais resolvidas por completo: pass^k (todas as rodadas, com o juiz) | 0.80 | o mesmo, em todas as rodadas de cada cenário |
 | Oficiais resolvidas só em parte (resposta parcial; fora da manchete) | 0.00 | resolvida sem humano, mas com um passo parcial (a resposta diz o que a fonte não cobre): honesta, fora da manchete; somada a ela dá a fração com resposta útil em parte |
+| Juiz: respostas oficiais fundamentadas | 0.97 | juiz LLM com o texto das fontes: cada afirmação apoiada nelas |
+| Juiz: respostas oficiais úteis (helpful) | 0.97 | juiz LLM: a resposta resolve o que o lojista perguntou |
 | Memória ao vivo: pass@1 | 0.98 | conversas de vários turnos: o fato do turno anterior chega à resposta |
 | Humano no laço: resposta do operador no mesmo turno (split hitl) | 1.00 | operadora simulada responde o caso aberto no turno dentro da espera: a resposta dela e os passos pendentes saem no mesmo turno (a que chega depois vai pela retomada, uma vez só) |
 | Busca: Recall@3 | 0.90 | perguntas rotuladas olhando a fonte: a página certa entre as 3 primeiras |
 | Busca: MRR | 0.91 | posição média da primeira página certa (1 = sempre em primeiro) |
-| Turnos resolvidos sem humano (ao vivo, todos os splits) | 0.89 | todas as execuções ao vivo, de todos os splits: resposta sem pedir humano, sem erro e, se julgada, fundamentada pelo juiz (recusa do guardrail conta; o fato se confere só nas oficiais resolvidas) |
-| Custo por turno resolvido sem humano (ao vivo) | US$ 0.0318 | gasto ao vivo de todos os splits (inclusive turnos que foram ao humano e turnos anteriores das conversas) ÷ as execuções resolvidas da linha acima |
-
-Não medido nesta entrega: Juiz: respostas oficiais fundamentadas; Juiz: respostas oficiais úteis (helpful).
+| Turnos resolvidos sem humano (ao vivo, todos os splits) | 0.88 | todas as execuções ao vivo, de todos os splits: resposta sem pedir humano, sem erro e, se julgada, fundamentada pelo juiz (recusa do guardrail conta; o fato se confere só nas oficiais resolvidas) |
+| Custo por turno resolvido sem humano (ao vivo) | US$ 0.0323 | gasto ao vivo de todos os splits (inclusive turnos que foram ao humano e turnos anteriores das conversas) ÷ as execuções resolvidas da linha acima |
 <!-- scorecard:end -->
 
 ### 0.1 Mapeamento do desafio
@@ -344,6 +344,10 @@ As perguntas que uma entrevista técnica faria, respondidas com o número medido
 | O que cortaria para outro time manter? | a tabela de `docs/ESSENCIAL.md`, gerada das linhas de `src/app/`: o que o enunciado pede, o que é bônus ou operação, e o que se perde ao cortar cada bloco, na ordem em que sairiam | `docs/ESSENCIAL.md` |
 | Quais decisões são próprias e quais vieram de soluções públicas? | as ideias de fora estão listadas na PROCEDENCIA, com a origem; as próprias (conferência de claims, achado da tool, portão por cross-encoder, ações com quatro olhos, livro de fatos, replay na CI, rotulagem cega com adulteradas) estão no ADR 0010, cada uma com a prova | `docs/adr/0010-decisoes-proprias.md` |
 
+<!-- sem-prova:begin (prova inexistente nesta entrega; a linha volta quando existir)
+| Quais respostas oficiais o juiz reprova, e por quê, se intenção e ferramentas acertam? | o juiz lê o texto das fontes e marca cada execução (fundamentada, útil, tipo de falha); as reprovações, caso a caso, estão em `docs/FAILURE_MODES.md`; o antes × depois da correção, no mesmo código final, em `docs/JUDGE_DIFF.md` | `docs/JUDGE_DIFF.md` |
+sem-prova:end -->
+
 **O que ficou de fora nesta entrega, com a causa:**
 
 - **Rodada 2 (antes × depois das correções, `judge_diff`):** cortada pelo relógio. A rodada 1 terminou no minuto 38, depois do corte do minuto 36; os números são todos da rodada 1, sobre o mesmo código.
@@ -352,10 +356,7 @@ As perguntas que uma entrevista técnica faria, respondidas com o número medido
 - **Perguntas reais:** 21 de 40. O site de reclamações bloqueou a leitura das páginas, então as perguntas foram reescritas a partir dos títulos, cada uma com o link.
 - **Validação do juiz por pessoas:** 1 rotulador, 22 itens; a pessoa não reprovou nenhuma das 10 respostas adulteradas, então a rotulagem desta entrega não valida o juiz.
 - **Vídeo:** não gravado nesta entrega.
-
-<!-- sem-prova:begin (prova inexistente nesta entrega; a linha volta quando existir)
-| Quais respostas oficiais o juiz reprova, e por quê, se intenção e ferramentas acertam? | o juiz lê o texto das fontes e marca cada execução (fundamentada, útil, tipo de falha); as reprovações, caso a caso, estão em `docs/FAILURE_MODES.md`; o antes × depois da correção, no mesmo código final, em `docs/JUDGE_DIFF.md` | `docs/JUDGE_DIFF.md` |
-sem-prova:end -->
+- **Furo conhecido em `docs/RESULTS.md`:** a tabela por split usa o rótulo "resolvidas pela regra" para uma medida diferente da linha de cada split (em `dependent`, `replan` e `official-var` a tabela mostra 100% e a linha mostra 50%, 60% e 90%). Os números que valem são os da linha do split, que tiram as respostas parciais. A conferência de docs (`scripts/check.py --docs`) reprova essa divergência, e não houve tempo de corrigir o gerador.
 
 ## 8. Procedência e linha do tempo
 
@@ -374,22 +375,9 @@ e como comparar pela primeira entrega.
 | 14:43:23 | -18 | chore: repositório (antes do relógio) |
 | 15:01:29 | 0 | chore: scaffold from entregar-desafio-cronometrado kit v5.9.1 (dominio montado) |
 | 15:03:51 | 2 | preflight: domínio do desafio |
-| 15:04:08 | 3 | heldout: H1+H2 cegos (80) + H3 humano (31); exemplo do k-NN igual a heldout-H1-05 sai do treino |
-| 15:04:44 | 3 | real: 21 perguntas públicas de lojistas com link (meta 40; Reclame Aqui bloqueou a leitura, reescritas a partir dos títulos) |
-| 15:16:16 | 15 | gate: limiar do portão calibrado |
-| 15:17:54 | 16 | live: fumaça dos oficiais (repeat 1) com gravação |
-| 15:18:57 | 17 | live: fumaça da memória (repeat 1) com gravação |
-| 15:21:37 | 20 | busca: buscador medido no domínio |
-| 15:24:05 | 23 | gate: eval offline e oficiais conferidos |
-| 15:25:06 | 24 | docs: atendimento humano de verdade (caso respondido por pessoa:Matheus, auditoria operator:Matheus) |
-| 15:25:33 | 24 | merge fix/hitl-humano: atendimento humano de verdade |
-| 15:27:13 | 26 | rótulos: página de conferência congelada (12 reais da fumaça + 10 adulteradas), antes das marcações |
-| 15:35:44 | 34 | readme: texto fixo só com o que tem prova nesta entrega |
-| 15:36:34 | 35 | merge fix/readme-texto: README diz o que rodou |
-| 15:38:25 | 37 | rótulos: 22 marcações de uma pessoa sobre a página congelada (0 de 10 adulteradas reprovadas, declarado) |
-| 15:38:42 | 37 | merge fix/rotulos: rótulos humanos |
+| 15:44:36 | 43 | demo: respostas reais dos oficiais |
 
-Relógio: **37 min**, 17 commits.
+Relógio: **43 min**, 23 commits (aqui os 4 marcos; todos em `docs/TIMESHEET.md`).
 <!-- timeline:end -->
 
 </details>
