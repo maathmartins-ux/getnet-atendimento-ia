@@ -1,0 +1,89 @@
+{
+  "status": "aborted_llm_error",
+  "reason": "api_status_404: Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: gpt-5'}, 'request_id': 'req_011Cgk2jfkSmMwfDAgHtHtzt'}",
+  "resumed_verdicts": 0,
+  "model": "gpt-5",
+  "provider": "anthropic",
+  "prompt_sha": "7c1f413f2d56",
+  "judge_family": "openai",
+  "generator_models": [
+    "claude-haiku-5-5",
+    "claude-sonnet-5-5"
+  ],
+  "generator_families": [
+    "anthropic"
+  ],
+  "same_family": false,
+  "family_note": "juiz de outra família (openai) que o gerador (anthropic)",
+  "live_files": [
+    "live_approval.json",
+    "live_dependent.json",
+    "live_guardrail.json",
+    "live_hard.json",
+    "live_heldout.json",
+    "live_hitl.json",
+    "live_memory.json",
+    "live_official-var.json",
+    "live_official.json",
+    "live_parallel.json",
+    "live_partial.json",
+    "live_real.json",
+    "live_replan.json"
+  ],
+  "spent_usd": 0.0,
+  "max_usd": null,
+  "judge_unreliable": true,
+  "canaries": {
+    "cases": 4,
+    "ran": 0,
+    "caught": 0,
+    "from_domain": 2,
+    "missed": [],
+    "details": []
+  },
+  "cases": 0,
+  "grounded_rate": 0.0,
+  "helpful_rate": 0.0,
+  "mean_score": 0.0,
+  "ci": {
+    "grounded_rate": null,
+    "helpful_rate": null
+  },
+  "by_split": {},
+  "failure_types": {
+    "ALL": {}
+  },
+  "calibration": {
+    "cases": 0,
+    "agreement": null,
+    "cohen_kappa": null,
+    "tpr": null,
+    "tnr": null,
+    "positives": 0,
+    "negatives": 0,
+    "validation": {
+      "validated": false,
+      "missing": [
+        ">= 10 positivos e negativos humanos (tem 0 e 0)",
+        "TPR e TNR >= 0.8 (tem None e None)",
+        "rótulos de pessoas (campo labeler: \"human:<nome>\"); estes vêm da SPEC ou de modelo"
+      ],
+      "rule": ">= 10 por classe e TPR, TNR >= 0.8"
+    },
+    "ci": {
+      "agreement": null,
+      "tpr": null,
+      "tnr": null
+    },
+    "misses": [],
+    "by_split": {},
+    "by_failure_type": {},
+    "labels_origin": "spec",
+    "labelers": []
+  },
+  "trust_reused": false,
+  "calibration_pairs": [],
+  "judge_refused": [],
+  "calibration_refused": [],
+  "verdicts": []
+}

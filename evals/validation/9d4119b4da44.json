@@ -1722,5 +1722,18 @@
    "original_id": "memory-14",
    "original_split": "memory"
   }
+ ],
+ "rejulgamentos": [
+  {
+   "model": "gpt-5",
+   "prompt_sha": "7c1f413f2d56",
+   "status": "aborted_llm_error",
+   "em": "2026-11-05T15:39:09+00:00",
+   "trust_reused": false,
+   "judge_unreliable": true,
+   "spent_usd": 0.0,
+   "vereditos": {},
+   "recusados": []
+  }
  ]
 }
