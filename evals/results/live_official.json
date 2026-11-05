@@ -49,20 +49,20 @@
   "resolved": {
     "by_split": {
       "official": {
-        "k": 27,
+        "k": 26,
         "n": 30,
-        "rate": 0.9,
+        "rate": 0.8667,
         "ci": {
-          "k": 27,
+          "k": 26,
           "n": 30,
-          "lo": 74.4,
-          "hi": 96.5
+          "lo": 70.3,
+          "hi": 94.7
         },
-        "pass_hat_k": 0.9,
+        "pass_hat_k": 0.8,
         "cases": {
           "official-01": {
             "runs": 3,
-            "resolved": 3,
+            "resolved": 2,
             "partial": 0
           },
           "official-02": {
@@ -112,6 +112,7 @@
           }
         },
         "unresolved": [
+          "official-01",
           "official-04"
         ],
         "partial": {
@@ -121,26 +122,32 @@
           "cases": []
         },
         "with_partial": {
-          "k": 27,
+          "k": 26,
           "n": 30,
-          "rate": 0.9,
+          "rate": 0.8667,
           "ci": {
-            "k": 27,
+            "k": 26,
             "n": 30,
-            "lo": 74.4,
-            "hi": 96.5
+            "lo": 70.3,
+            "hi": 94.7
           }
         },
-        "basis": "lexical",
-        "judged": 0,
+        "basis": "regex+juiz",
+        "judged": 30,
         "lexical": {
           "k": 27,
           "n": 30,
           "rate": 0.9
         },
         "disagree": {
-          "regex_only": [],
-          "judge_only": []
+          "regex_only": [
+            "official-01"
+          ],
+          "judge_only": [
+            "official-04",
+            "official-04",
+            "official-04"
+          ]
         }
       }
     }
@@ -8664,11 +8671,21 @@
     }
   },
   "judge": {
+    "status": "ran",
+    "file": "judge.json",
+    "verdicts": 30,
+    "grounded": 29,
+    "helpful": 29,
+    "judge_unreliable": false
+  },
+  "judge_first_pass": {
     "status": "aborted_llm_error",
     "file": "judge.json",
     "verdicts": 0,
     "grounded": 0,
     "helpful": 0,
-    "judge_unreliable": true
+    "judge_unreliable": true,
+    "data_do_juiz": "2026-11-05",
+    "trocado_por": "python -m evals.judge (juiz inteiro de novo)"
   }
 }
