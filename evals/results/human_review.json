@@ -1,0 +1,110 @@
+{
+ "rotulos": 12,
+ "humano_passa": 10,
+ "automatico_passa": 11,
+ "concordancia": 0.75,
+ "kappa": -0.125,
+ "ac1": 0.68,
+ "negativos": {
+  "humano": 2,
+  "automatico": 1
+ },
+ "kappa_leitura": "sem leitura: 1 negativo(s) de um lado (< 5); um item muda o sinal. Leia a concordância, o AC1 e as divergências",
+ "divergencias": [
+  {
+   "id": "official-04",
+   "humano": "pass",
+   "automatico": "fail",
+   "nota": "",
+   "pessoa_reprovou": [],
+   "checagem_falhou": [
+    "facts",
+    "resolved"
+   ]
+  },
+  {
+   "id": "official-08",
+   "humano": "fail",
+   "automatico": "pass",
+   "nota": "unsupported_claim",
+   "pessoa_reprovou": [
+    "c2"
+   ],
+   "checagem_falhou": []
+  },
+  {
+   "id": "memory-01",
+   "humano": "fail",
+   "automatico": "pass",
+   "nota": "wrong_route",
+   "pessoa_reprovou": [
+    "c1"
+   ],
+   "checagem_falhou": []
+  }
+ ],
+ "base": "rótulo das pessoas por resposta: de quem rotulou sozinho, o comum quando concordam, o do consenso quando divergem",
+ "sem_consenso": [],
+ "rotuladores": 1,
+ "por_rotulador": {
+  "matheus": {
+   "rotulos": 12,
+   "concordancia": 0.75,
+   "kappa": -0.125,
+   "heldout": null
+  }
+ },
+ "heldout": null,
+ "entre_humanos": null,
+ "juiz_x_humano": null,
+ "adulteradas": {
+  "arquivo": "perturbed.json",
+  "geradas": 19,
+  "por_tipo": {
+   "numero_trocado": 10,
+   "afirmacao_sem_base": 1,
+   "fato_removido": 8
+  },
+  "rotuladas": 10,
+  "rotuladas_por_tipo": {
+   "numero_trocado": 7,
+   "afirmacao_sem_base": 0,
+   "fato_removido": 3
+  },
+  "humano": {
+   "matheus": {
+    "rotuladas": 10,
+    "reprovou": 0
+   }
+  },
+  "juiz": null,
+  "fora_da_conta": [],
+  "aviso": null
+ },
+ "tempo_por_rotulador": {
+  "matheus": {
+   "itens_com_tempo": 22,
+   "mediana_s": 19.5,
+   "total_s": 537,
+   "rapidas": 11,
+   "limite_s": 20,
+   "numeros_achados_sem_estar": 21,
+   "situacoes_com_erro_de_atencao": 10
+  }
+ },
+ "bateria": {
+  "regra": "rótulo de pessoa só se compara com veredito do juiz, checagem ou outra pessoa sobre o MESMO texto: o da página congelada (evals/validation/<amostra>.json) ou, sem ela, a resposta de hoje em evals/results; rótulo de outro texto sai de toda conta e é listado",
+  "rotulos_por_bateria": {
+   "50ff819": 12,
+   "c7d9f32": 10
+  },
+  "de_pagina_congelada": 22,
+  "do_texto_de_hoje": 0,
+  "paginas": [
+   "9d4119b4da44"
+  ]
+ },
+ "rotulos_de_outra_bateria": null,
+ "aviso_juiz": null,
+ "aviso": "só 12 rótulos: abaixo de 20 não dá para confiar"
+}
