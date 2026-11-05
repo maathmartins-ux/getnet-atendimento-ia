@@ -12,7 +12,7 @@ Tudo aqui é gerado por `scripts/fill_readme.py` a partir de `evals/results/` co
 - **Abaixo:** Oficiais: pass^k (todas as rodadas passam) 0.80 (referência 0.90) — causa por caso em `docs/FAILURE_MODES.md`.
 - **Abaixo:** Rotuladores humanos independentes 1 (referência 2) — a validação humana precisa de 2 pessoas rotulando a mesma amostra às cegas.
 - **Abaixo, ainda:** Juiz validado contra rótulos de pessoas (1 = sim, regra fixada antes) 0.
-- **Ao vivo:** 13 splits, 321 execuções, 295 sem nenhuma checagem falhando; os mais fracos pela checagem principal: `heldout` (bloqueio certo 0%), `parallel` (resolvidas pela regra 80%).
+- **Ao vivo:** 13 splits, 321 execuções, 295 sem nenhuma checagem falhando; os mais fracos pela checagem principal: `heldout` (bloqueio certo 0%), `parallel` (resolvidas com parciais 80%).
 - **Juiz LLM:** oficiais fundamentadas 0.97 e úteis 0.97; ainda não validado contra pessoas: serve para comparar commits, não como medida absoluta.
 - **Gate offline (CI):** intenção 100.0% nos splits do gate (mínimo 90%) → PASS.
 - **Não medido:** Held-out cego: ponta a ponta (humano passa).

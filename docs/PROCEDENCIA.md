@@ -1,7 +1,7 @@
 # Procedência: o que veio do kit e o que foi feito no relógio
 
 Este documento existe para que a comparação com quem entregou uma vez só seja justa. Ele diz o que já estava
-pronto antes do relógio, de onde veio e o que os <!-- minutos:begin -->43<!-- minutos:end --> minutos medem.
+pronto antes do relógio, de onde veio e o que os <!-- minutos:begin -->49<!-- minutos:end --> minutos medem.
 
 <!-- dominio-montado:begin -->
 **Domínio montado antes do relógio.** O corpus, o CRM simulado, os casos de avaliação, o gold de busca, os prompts e as regras do domínio e os docs do domínio vieram prontos da tentativa cronometrada anterior deste mesmo desafio (https://github.com/maathmartins-ux/getnet-ensaio-60min-r13, commit `7c93c4a`, 2026-11-04). No relógio desta entrega: held-out e perguntas reais escritos de novo por autores cegos, todas as medições (offline, ao vivo, juiz), a conferência humana, as correções e esta documentação. Vetores do corpus pré-calculados no kit (derivados do corpus, sem held-out nem perguntas reais; recalculados quando o texto muda).
@@ -65,7 +65,7 @@ declara o domínio montado).
 para medir as correções antes de usá-las; o resultado está no histórico do kit (`KIT_CHANGELOG.md`). Os números
 deste repositório vêm só das medidas feitas aqui, no relógio, sobre o corpus e os casos deste enunciado.
 
-## 2. O que os <!-- minutos:begin -->43<!-- minutos:end --> minutos medem, e o que não medem
+## 2. O que os <!-- minutos:begin -->49<!-- minutos:end --> minutos medem, e o que não medem
 
 - **Medem:** a especialização do kit para este enunciado, no relógio: spec, base de conhecimento, ferramentas do
   domínio, casos de avaliação (incluindo o held-out cego e as perguntas reais), prompts, regras do router e do
@@ -93,7 +93,7 @@ arquivos gerados, como `evals/results/`, ficam fora da conta):
 | `Dockerfile` | 74 | 0 | 0 | 0 |
 | `Makefile` | 74 | 0 | 0 | 0 |
 | `OWNERSHIP.json` | 89 | 0 | 0 | 0 |
-| `README.md` | 390 | 52 | 30 | 1 |
+| `README.md` | 390 | 40 | 30 | 1 |
 | `data` | 60 | 461 | 0 | 0 |
 | `data/crm` | 35 | 0 | 0 | 0 |
 | `data/intent_examples.d` | 22 | 0 | 1 | 1 |
@@ -102,9 +102,9 @@ arquivos gerados, como `evals/results/`, ficam fora da conta):
 | `docker-compose.hardened.yml` | 54 | 0 | 0 | 0 |
 | `docker-compose.scale.yml` | 31 | 0 | 0 | 0 |
 | `docker-compose.yml` | 105 | 0 | 0 | 0 |
-| `docs` | 1256 | 278 | 0 | 0 |
+| `docs` | 1256 | 779 | 10 | 3 |
 | `docs/adr` | 441 | 0 | 0 | 0 |
-| `evals` | 9351 | 312 | 0 | 0 |
+| `evals` | 9351 | 313 | 1 | 1 |
 | `evals/cases.d` | 127 | 0 | 0 | 0 |
 | `evals/cassettes` | 0 | 2388 | 0 | 0 |
 | `evals/essential` | 1277 | 0 | 0 | 0 |
@@ -112,7 +112,7 @@ arquivos gerados, como `evals/results/`, ficam fora da conta):
 | `evals/proxy` | 286 | 0 | 0 | 0 |
 | `evals/retrieval.d` | 66 | 0 | 0 | 0 |
 | `evals/retrieval.drafts` | 15 | 0 | 0 | 0 |
-| `evals/validation` | 0 | 1739 | 0 | 0 |
+| `evals/validation` | 0 | 2015 | 0 | 0 |
 | `ops` | 813 | 0 | 0 | 0 |
 | `pyproject.toml` | 59 | 0 | 0 | 0 |
 | `requirements-dev.lock` | 252 | 0 | 0 | 0 |
@@ -120,10 +120,10 @@ arquivos gerados, como `evals/results/`, ficam fora da conta):
 | `requirements.lock` | 149 | 0 | 0 | 0 |
 | `scripts` | 8279 | 0 | 397 | 4 |
 | `src/app` | 16085 | 2 | 2 | 1 |
-| `tests` | 26048 | 0 | 938 | 16 |
+| `tests` | 26048 | 1 | 939 | 17 |
 | `tests/fixtures` | 122 | 0 | 0 | 0 |
 
-Total: **66672** linhas do kit (commit `7cd5f68`) e **5232** escritas no relógio (7% do total). Arquivos do kit alterados no relógio: 24. Fora da conta, por serem gerados: 163795 linhas em `evals/results/`.
+Total: **66672** linhas do kit (commit `7cd5f68`) e **5999** escritas no relógio (8% do total). Arquivos do kit alterados no relógio: 29. Fora da conta, por serem gerados: 163986 linhas em `evals/results/`.
 <!-- kit:end -->
 
 Linha do tempo commit a commit, com as tags `clock-start` e `clock-end`: [TIMESHEET.md](TIMESHEET.md).

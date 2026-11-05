@@ -7,7 +7,7 @@ Atendimento multiagente para lojistas da Getnet: um Router lê cada mensagem (pt
 |---|---|
 | Rodar | `docker compose up -d --build` → `http://localhost:8000/docs` · console do operador em `/operator` |
 | Testar | `python scripts/check.py --docker --scale` (lint, testes, eval com gate, build, imagem sem extras, smoke do container, 2 réplicas atrás de balanceador) |
-| CI | [GitHub Actions](../../actions/workflows/ci.yml) |
+| CI | [GitHub Actions](../../actions/workflows/ci.yml) (o último commit é só o README; o código é o do commit anterior) |
 <!-- links:end -->
 
 O que o enunciado pede que o README cubra → onde: build, configure, run and test (§1) · orchestration architecture
@@ -375,9 +375,9 @@ e como comparar pela primeira entrega.
 | 14:43:23 | -18 | chore: repositório (antes do relógio) |
 | 15:01:29 | 0 | chore: scaffold from entregar-desafio-cronometrado kit v5.9.1 (dominio montado) |
 | 15:03:51 | 2 | preflight: domínio do desafio |
-| 15:44:36 | 43 | demo: respostas reais dos oficiais |
+| 15:50:31 | 49 | readme: linha do tempo com o último commit |
 
-Relógio: **43 min**, 23 commits (aqui os 4 marcos; todos em `docs/TIMESHEET.md`).
+Relógio: **49 min**, 26 commits (aqui os 4 marcos; todos em `docs/TIMESHEET.md`).
 <!-- timeline:end -->
 
 </details>

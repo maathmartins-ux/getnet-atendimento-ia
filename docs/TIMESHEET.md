@@ -1,7 +1,7 @@
 # Linha do tempo (gerada do `git log`)
 
-Relógio: **43 min** de 05/11/2026 15:01:29 a 15:44:05 (tag clock-start à tag clock-end; horário do commit, fuso UTC). 17 commits dentro do relógio, 1 depois e 1 antes (declarados abaixo).
-Maior rajada: 6 commits em até 10 min a partir de 15:16:16.
+Relógio: **49 min** de 05/11/2026 15:01:29 a 15:50:31 (commit de scaffold ('chore: scaffold') ao último commit; horário do commit, fuso UTC). 21 commits dentro do relógio, 0 depois e 1 antes (declarados abaixo).
+Maior rajada: 7 commits em até 10 min a partir de 15:35:44.
 
 | min | hora | autor | arquivos | commit | relógio |
 |---:|---|---|---:|---|---|
@@ -23,8 +23,9 @@ Maior rajada: 6 commits em até 10 min a partir de 15:16:16.
 | 40.5 | 15:41:59 | Claude | 1 | `01d84f5` readme: conferência humana diz o resultado (0 de 10 adulteradas pegas) | dentro |
 | 40.9 | 15:42:25 | Claude | 1 | `f7f013b` readme: cortes declarados com a causa e atendimento humano real citado | dentro |
 | 42.6 | 15:44:05 | Claude | 3 | `c03261c` juiz: Opus sobre official e memory da rodada 1 (o juiz por dentro da rodada abortou com o  | dentro |
-| 43.1 | 15:44:36 | Claude | 1 | `8a729dc` demo: respostas reais dos oficiais | pós-relógio |
+| 43.1 | 15:44:36 | Claude | 1 | `8a729dc` demo: respostas reais dos oficiais | dentro |
+| 46.1 | 15:47:35 | Claude | 8 | `0a2b21b` readme: entrega final (números da rodada 1 com o juiz) | dentro |
+| 48.2 | 15:49:40 | Claude | 4 | `ad02492` resultados: um nome por medida (resolvidas com parciais × pela regra) | dentro |
+| 49.0 | 15:50:31 | Claude | 3 | `7de228d` readme: linha do tempo com o último commit | dentro |
 
 Commits antes do relógio: anteriores ao início (o repositório antes do scaffold); não contam no tempo declarado.
-
-Commits pós-relógio: não contam no tempo declarado e não entram no que foi medido no prazo.
