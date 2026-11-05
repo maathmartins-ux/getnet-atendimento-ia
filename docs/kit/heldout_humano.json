@@ -1,0 +1,169 @@
+{
+ "docs": [
+  {
+   "author": "Matheus",
+   "items": [
+    {
+     "q": "Quais os diferentes tipos de maquininha da getnet?",
+     "tipo": "knowledge",
+     "hum": "nao"
+    },
+    {
+     "q": "Por que minha maquininha está offline?",
+     "tipo": "troubleshoot",
+     "hum": "nao"
+    },
+    {
+     "q": "Quanto vendi ontem?",
+     "tipo": "support",
+     "hum": "nao"
+    },
+    {
+     "q": "Como antecipo as minhas vendas?",
+     "tipo": "knowledge",
+     "hum": "nao"
+    },
+    {
+     "q": "Qual a média das minhas vendas nesse mês?",
+     "tipo": "support",
+     "hum": "nao"
+    },
+    {
+     "q": "Como está a cotação do dólar hoje?",
+     "tipo": "general",
+     "hum": "nao"
+    },
+    {
+     "q": "Fui fraudado o que faço?",
+     "tipo": "blocked",
+     "hum": "nao"
+    },
+    {
+     "q": "Em que mês vendi mais esse ano?",
+     "tipo": "support",
+     "hum": "nao"
+    },
+    {
+     "q": "Qual o produto que eu mais vendo na minha loja?",
+     "tipo": "support",
+     "hum": "nao"
+    },
+    {
+     "q": "Qual o tipo de recebimento que mais passa na minha maquininha da getnet?",
+     "tipo": "support",
+     "hum": "nao"
+    },
+    {
+     "q": "Em qual das minhas maquininhas da getnet eu passo mais vendas?",
+     "tipo": "support",
+     "hum": "nao"
+    },
+    {
+     "q": "Minha maquininha está offline desde ontem o que eu faço?",
+     "tipo": "troubleshoot",
+     "hum": "nao"
+    },
+    {
+     "q": "minha maquininha não quer ligar o que eu devo fazer?",
+     "tipo": "troubleshoot",
+     "hum": "nao"
+    },
+    {
+     "q": "Estou sem bobinas a quem eu devo recorrer?",
+     "tipo": "human_request",
+     "hum": "sim"
+    },
+    {
+     "q": "Quanto eu gasto de bobina por mês?",
+     "tipo": "support",
+     "hum": "nao"
+    }
+   ]
+  },
+  {
+   "author": "Bianca",
+   "items": [
+    {
+     "q": "Qual é a melhor maquininha para um MEI?",
+     "tipo": "knowledge",
+     "hum": "nao"
+    },
+    {
+     "q": "Quando receberei os valores passados no débito na data de hoje?",
+     "tipo": "support",
+     "hum": "nao"
+    },
+    {
+     "q": "Qual é a taxa do crediário?",
+     "tipo": "support",
+     "hum": "nao"
+    },
+    {
+     "q": "Qual a taxa do dólar hoje?",
+     "tipo": "general",
+     "hum": "nao"
+    },
+    {
+     "q": "Onde consulto meu saldo na maquininha?",
+     "tipo": "support",
+     "hum": "nao"
+    },
+    {
+     "q": "Marquinha com erro, sobre o que é o erro?",
+     "tipo": "troubleshoot",
+     "hum": "nao"
+    },
+    {
+     "q": "Como reiniciar a maquininha?",
+     "tipo": "troubleshoot",
+     "hum": "nao"
+    },
+    {
+     "q": "Como fazer recebimento de pix com a maquininha? Quando este valor será creditado na minha conta?",
+     "tipo": "multi",
+     "hum": "nao"
+    },
+    {
+     "q": "Qual é a previsão do tempo em Goiânia?",
+     "tipo": "general",
+     "hum": "nao"
+    },
+    {
+     "q": "Como encontro a assistência técnica da maquininha?",
+     "tipo": "troubleshoot",
+     "hum": "nao"
+    },
+    {
+     "q": "Tenho duas maquininhas, alguma delas está com erro? A conexão com internet estava estável?",
+     "tipo": "multi",
+     "hum": "nao"
+    },
+    {
+     "q": "Há possibilidade de parcelamento no crédito?",
+     "tipo": "knowledge",
+     "hum": "nao"
+    },
+    {
+     "q": "Qual é o total que vendi na maquininha este mês?",
+     "tipo": "support",
+     "hum": "nao"
+    },
+    {
+     "q": "Como realizar estorno pela maquininha?",
+     "tipo": "support",
+     "hum": "nao"
+    },
+    {
+     "q": "Onde consulto o status de um estorno pela maquininha?",
+     "tipo": "support",
+     "hum": "nao"
+    },
+    {
+     "q": "Posso conectar minha maquininha no Wi-Fi?",
+     "tipo": "knowledge",
+     "hum": "nao"
+    }
+   ]
+  }
+ ]
+}
