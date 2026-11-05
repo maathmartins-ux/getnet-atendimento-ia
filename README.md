@@ -321,8 +321,10 @@ conta como **resolvida** sem humano, com todo fato de referência e com fonte.
   resolvidas** (sem humano + todo fato de referência + fonte), juiz no mesmo processo depois de cada split,
   cassete para o replay no CI (`--replay`, piso = taxas da gravação aceita).
 - **Humano**: conferência às cegas de respostas ao vivo na página de rotulagem (cada resposta sem a nota automática
-  nem o veredito do juiz, com respostas adulteradas de propósito no meio); o que as pessoas marcaram nesta entrega
-  está no bloco de validação humana de `docs/RESULTS.md`, gerado dos rótulos. Um caso real respondido por uma pessoa
+  nem o veredito do juiz, com respostas adulteradas de propósito no meio). Nesta entrega a pessoa não pegou nenhuma
+  das 10 adulteradas (mediana de 19,5 s por item): esta conferência não vale como prova de qualidade nem valida o
+  juiz; a medida fica no juiz e nas checagens automáticas, e os números estão no bloco de validação humana de
+  `docs/RESULTS.md`, gerado dos rótulos (`evals/results/human_review.json`). Um caso real respondido por uma pessoa
   pelo console do operador, com a auditoria, está em [docs/HITL_HUMANO.md](docs/HITL_HUMANO.md). Held-out escrito
   por autores cegos e 31 perguntas escritas por pessoas (H3) (passa/falha ponta a ponta; a intenção é diagnóstico).
   No relógio rodaram: suíte offline, gate do eval e as medidas ao vivo da linha do tempo do §8 (o que cada uma mediu, com o juiz, está em `docs/RESULTS.md`). Imagem, smoke do container e 2 réplicas (`check.py --docker --scale`) rodam no job `check (docker)` da CI do commit final (link no topo; o `check` roda em 6 partes paralelas: `core`, `docker` e o replay das gravações em 4 pedaços): o container da sessão de construção não tem docker. O que ficou de fora desta entrega está no §7, com a causa.
