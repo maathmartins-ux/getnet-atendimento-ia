@@ -299,10 +299,10 @@ Cada decisão com a alternativa descartada e o número que a decidiu. Os número
   agentes Sonnet, juiz Opus ou de outra família (`JUDGE_PROVIDER=openai_compat`). Ferramentas com JSON Schema e
   identidade do servidor (`src/app/tools.py`); saída estruturada no router e no juiz; cache de prompt no system e
   nas tools de cada papel; cassete grava cada resposta do LLM para o replay offline no CI.
-- **Na construção:** o kit trouxe o motor (`src/app/*.py`), o eval, os scripts e a CI; o domínio (corpus, CRM simulado, casos, gold de busca, prompts, regras e docs do domínio) veio montado da tentativa cronometrada anterior deste desafio, com a origem e o commit declarados em [docs/PROCEDENCIA.md](docs/PROCEDENCIA.md). No relógio, uma sessão principal do Claude Code integrou, mediu e corrigiu; dois autores cegos (subagentes que não viram o código nem os casos) escreveram de novo o held-out e um coletor buscou perguntas reais de lojistas com link; pessoas conferiram às cegas respostas ao vivo na página de rotulagem; uma sessão revisora apontou correções que entraram por merge.
+- **Na construção:** o kit trouxe o motor (`src/app/*.py`), o eval, os scripts e a CI; o domínio (corpus, CRM simulado, casos, gold de busca, prompts, regras e docs do domínio) veio montado da tentativa cronometrada anterior deste desafio, com a origem e o commit declarados em [docs/PROCEDENCIA.md](docs/PROCEDENCIA.md). No relógio, uma sessão principal do Claude Code integrou, mediu e corrigiu; dois autores cegos (subagentes que não viram o código nem os casos) escreveram de novo o held-out, duas pessoas escreveram mais 31 perguntas (H3) sem ver código nem casos, e um coletor buscou perguntas reais de lojistas com link; pessoas conferiram às cegas respostas ao vivo na página de rotulagem; uma sessão revisora apontou correções que entraram por merge.
 - **Na avaliação:** LLM como juiz com canários e um gabarito de calibração (rótulos escritos a partir da SPEC; humanos
-  quando houver rotulagem); rascunho de rótulo pelo modelo com revisão do dono linha a linha
-  (`python -m evals.error_analysis`), separado da rotulagem cega.
+  quando houver rotulagem); rascunho de rótulo pelo modelo (`python -m evals.error_analysis`), separado da
+  rotulagem cega.
 
 ## 6. Testing strategy (unit, integration, live)
 
@@ -320,10 +320,12 @@ conta como **resolvida** sem humano, com todo fato de referência e com fonte.
 - **Live** (`--live`): por split com teto de US$ proporcional ao tamanho, `--repeat` (pass^k), manchete **oficiais
   resolvidas** (sem humano + todo fato de referência + fonte), juiz no mesmo processo depois de cada split,
   cassete para o replay no CI (`--replay`, piso = taxas da gravação aceita).
-- **Humano**: conferência às cegas de respostas ao vivo na página de rotulagem (2 exemplos de treino com gabarito,
-  depois cada resposta sem a nota automática nem o veredito do juiz), com a concordância entre as pessoas e com o juiz
-  em `docs/RESULTS.md`; held-out escrito por autores cegos (passa/falha ponta a ponta; a intenção é diagnóstico).
-  No relógio rodaram: suíte offline, gate do eval, fumaça ao vivo dos oficiais e a bateria ao vivo integral (oficiais e memória com 3 repetições, juiz no mesmo processo) mais a ablação do replanejamento nas perguntas reais. Imagem, smoke do container e 2 réplicas (`check.py --docker --scale`) rodam no job `check (docker)` da CI do commit final (link no topo; o `check` roda em 6 partes paralelas: `core`, `docker` e o replay das gravações em 4 pedaços): o container da sessão de construção não tem docker. O que ficou de fora desta entrega está no §7, com a causa.
+- **Humano**: conferência às cegas de respostas ao vivo na página de rotulagem (cada resposta sem a nota automática
+  nem o veredito do juiz, com respostas adulteradas de propósito no meio); o que as pessoas marcaram nesta entrega
+  está no bloco de validação humana de `docs/RESULTS.md`, gerado dos rótulos. Um caso real respondido por uma pessoa
+  pelo console do operador, com a auditoria, está em [docs/HITL_HUMANO.md](docs/HITL_HUMANO.md). Held-out escrito
+  por autores cegos e 31 perguntas escritas por pessoas (H3) (passa/falha ponta a ponta; a intenção é diagnóstico).
+  No relógio rodaram: suíte offline, gate do eval e as medidas ao vivo da linha do tempo do §8 (o que cada uma mediu, com o juiz, está em `docs/RESULTS.md`). Imagem, smoke do container e 2 réplicas (`check.py --docker --scale`) rodam no job `check (docker)` da CI do commit final (link no topo; o `check` roda em 6 partes paralelas: `core`, `docker` e o replay das gravações em 4 pedaços): o container da sessão de construção não tem docker. O que ficou de fora desta entrega está no §7, com a causa.
 
 ## 7. Perguntas da entrevista, respondidas
 
